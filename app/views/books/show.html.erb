@@ -1,7 +1,26 @@
-<h2><%= @book.title %></h2>
-<h3><%= @book.author %></h3>
-<h4>カテゴリー： <%= @book.category.name %>></h4>
-<p><%= @book.description %></p>
+<div class="row">
+
+  <div class="col-md-4">
+    <%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
+  </div>
+
+  <div class="col-md-8">
+    <h2><%= @book.title %></h2>
+    <h3><%= @book.author %></h3>
+    <!-- <h4>カテゴリー：<%#= @book.category.name %>></h4> -->
+    <p><%= @book.description %></p>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <!-- reviewをここに書くよ -->
+  </div>
+</div>
+
+
+
 
 <%= link_to "戻る", root_path %>
 

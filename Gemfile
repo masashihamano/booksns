@@ -37,8 +37,10 @@ gem 'simple_form'
 #認証機能(login,logout)が簡単にできる
 gem 'devise'
 # ファイルアップロードを簡単に実装できる
-gem 'paperclip', '~> 4.2.1'
+gem 'paperclip'
+# gem 'paperclip', '~> 4.2.1'
 
+# バージョンを下げないとdropdown出来ない
 # bootstrap利用時に追加
 gem 'bootstrap-sass', '3.3.6'
 # gem 'jquery-rails'
