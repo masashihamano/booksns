@@ -2,6 +2,8 @@ class Book < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+  has_many :reviews
+
 
 # 各ページのイメージサイズを合わせるのに必要
   has_attached_file :book_img, :styles => { :book_index => "250x350>", :book_show => "325x475>" }, :default_url => "/images/:style/missing.png"

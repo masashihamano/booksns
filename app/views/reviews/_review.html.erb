@@ -1,0 +1,18 @@
+<!-- <p><%#= review.rating %></p> -->
+<div class="review">
+  <div class="review-rating" data-score="<%= review.rating %>"></div>
+  <p class="review-comment"><%= review.comment %></p>
+
+  <% if user_signed_in? %>
+
+    <% if review.user_id == current_user.id %>
+
+      <div class="links btn-group">
+        <%= link_to "編集", edit_book_review_path(review.book, review), class:"btn btn-custom" %>
+        <%= link_to "削除", book_review_path(review.book, review), method: :delete, data: { confirm: "削除していいの？" }, class:"btn btn-custom" %>
+      </div>
+
+    <% end %>
+
+  <% end %>
+</div>

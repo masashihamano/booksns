@@ -1,0 +1,24 @@
+<div class="col-md-6 col-md-offset-3">
+
+  <div class="edit-review-form">
+
+    <h1>レビューの編集ページ</h1>
+
+    <%= simple_form_for([@book, @review]) do |f| %>
+      <div id="rating-form">
+        <%#= f.input :rating %>
+        <label>評価</label>
+      </div>
+        <%= f.input :comment, label: "コメント" %>
+        <%= f.button :submit, class => "btn-custom2" %>
+    <% end %>
+
+  </div>
+</div>
+
+<script>
+	$('#rating-form').raty({
+		path: '/assets/',
+		scoreName: 'review[rating]'
+	});
+</script>

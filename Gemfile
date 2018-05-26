@@ -44,7 +44,7 @@ gem 'paperclip'
 # bootstrap利用時に追加
 gem 'bootstrap-sass', '3.3.6'
 # gem 'jquery-rails'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'jquery-rails'
 gem 'jquery-turbolinks'
 
 

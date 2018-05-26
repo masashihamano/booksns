@@ -5,31 +5,65 @@
   </div>
 
   <div class="col-md-8">
-    <h2><%= @book.title %></h2>
-    <h3><%= @book.author %></h3>
-    <!-- <h4>カテゴリー：<%#= @book.category.name %>></h4> -->
-    <p><%= @book.description %></p>
+    <div class="book-info">
+      <h2 class="book-title"><%= @book.title %></h2>
+      <h3 class="book-author"><%= @book.author %><span>(著)</span></h3>
+      <h2 class="avg-rating">おすすめ度</h2>
+      <div class="average-review-rating" data-score=<%= @average_review %>></div>
+      <span class="number-of-reviews"><%= @book.reviews.count %>件のユーザーレビュー</span>
+      <p class="book-desc"><%= @book.description %></p>
+      <!-- <h4>カテゴリー：<%#= @book.category.name %>></h4> -->
+    </div>
+
   </div>
 
 </div>
 
 <div class="row">
   <div class="col-md-4">
-    <!-- reviewをここに書くよ -->
+    <div class="reviews">
+
+      <h1>ユーザーレビュー</h1>
+      <%= render @book.reviews %>
+
+      <div>
+        <%= link_to "レビューする", new_book_review_path(@book), class: "btn-custom" %>
+      </div>
+    </div>
   </div>
 </div>
 
 
+<div class="links btn-group">
+  <%= link_to "一覧に戻る", root_path, class: "btn btn-custom" %>
 
+  <% if user_signed_in? %>
 
-<%= link_to "戻る", root_path %>
+    <% if @book.user_id == current_user.id %>
 
-<% if user_signed_in? %>
+      <%= link_to "編集", edit_book_path(@book), class: "btn btn-custom" %>
+      <%= link_to "削除", book_path(@book), method: :delete, data: { confirm: "削除していいの?" }, class: "btn btn-custom" %>
 
-  <% if @book.user_id == current_user.id %>
-
-    <%= link_to "編集", edit_book_path(@book) %>
-    <%= link_to "削除", book_path(@book), method: :delete, data: { confirm: "削除していいの?" } %>
-
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>
